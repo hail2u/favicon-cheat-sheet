@@ -134,23 +134,24 @@ ICOファイル
 
 *TODO:* IE9以降で`.png`を`.ico`に含められることについての確認 ([Issue #9][5])
 
+
 お役立ちツール
 --------------
 
-I recommend:
+オススメなのは以下の2つです:
 
-  1. [OptiPNG][6], to optimize .png files before putting them into an .icon
-  2. [ImageMagick][7], [to create an .ico from .png files][8]
+  1. [OptiPNG][6]: `.ico`にまとめる前に`.png`を最適化
+  2. [ImageMagick][7]: [複数の`.png`ファイルをまとめて`.ico`に変換][8]
 
-Others that I haven't tried:
+試したわけではありませんが、以下のツールも役に立つでしょう:
 
-  * Ubuntu/Debian package `icoutil` has an icotool program which creates .ico from .png files.
-  * MSDN recommends this [web-based .ico creator][9]
-  * Resize favicons: [Faviconer][10]
-  * More resizing: [icon][11]
-  * Dynamically setting favicons: [favicon-setter][12]
-  * Fancy favicon tricks: [piecon][13]
-  * [Web Icon][14] - a simple shell script that generates favicon and touch icons
+  * Ubuntu/Debianのパッケージである`icoutil`は`.png`から`.ico`を作成するツールが含まれています。
+  * MSDNは[web-based .ico creator][9]の利用を推奨しています
+  * リサイズには[Faviconer][10]が良いでしょう。
+  * [icon][11]もリサイズに向いたツールです。
+  * JavaScriptを利用して動的にファビコンを変更する[favicon-setter][12]というツールもあります。
+  * ファイル・アップロードのプログレス表示などをファビコンで行える[piecon][13]というツールも面白いでしょう。
+  * [Web Icon][14]は12種類のサイズのファビコンを一気に作成してくれるシェルスクリプトです。
   * [Icon Slate app][15] (OS X)
   * [png2ico wrapper for ImageMagick][16]
 
