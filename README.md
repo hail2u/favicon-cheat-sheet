@@ -1,7 +1,7 @@
 ファビコン・カンニング・ペーパー
 ================================
 
-A painfully obsessive cheat sheet to favicon sizes/types. Compiled from:
+ファビコンのサイズや形式についての読むと頭が痛くなる偏執的なカンニング・ペーパーです。以下のURLを参考にしました:
 
   * http://mathiasbynens.be/notes/rel-shortcut-icon <-- special thanks [@mathiasbynens][1]
   * http://mathiasbynens.be/notes/touch-icons <-- special thanks [@mathiasbynens][1]
@@ -13,43 +13,41 @@ A painfully obsessive cheat sheet to favicon sizes/types. Compiled from:
   * http://msdn.microsoft.com/en-us/library/ie/gg491740(v=vs.85).aspx
 
 
-The HTML
---------
+HTMLでのマークアップ
+--------------------
 
-### Basics
+### 基本
 
-For the main favicon itself, it's [best][2] for cross-browser compatibility not to
-use any HTML. Just name the file `favicon.ico` and place it in [the root of your
-domain][2].
+メインになるファビコンについては各ブラウザーでの互換性を考慮して[HTMLでは特に指定しないのが望ましい][2]です。単に`favicon.ico`という名前でドメインのルートに配置するだけで構いません。
 
-This works in every desktop browser/version all the way back to IE6, except for SeaMonkey.
+こうするとIE6も含め全てのデスクトップ向けブラウザーのすべてのバージョン(SeaMonkey以外)でうまくいきます。
 
 
-### Optional But Encouraged
+### 推奨
 
-You probably also want the following:
+以下のコードは指定しておくと良いかもしれません:
 
-  1. Touch icon for iOS 2.0+ and Android 2.1+:
+  1. iOS 2.0以降とAndroid 2.1以降向けのタッチ・アイコン:
 
      ```html
      <link rel="apple-touch-icon-precomposed" href="path/to/favicon-152.png">
      ```
 
-  2. IE 10 Metro tile icon (Metro equivalent of apple-touch-icon):
+  2. IE10のMetroタイル・アイコン(Metroにおけるタッチ・アイコンのようなもの):
 
      ```html
      <meta name="msapplication-TileColor" content="#FFFFFF">
      <meta name="msapplication-TileImage" content="/path/to/favicon-144.png">
      ```
 
-     Replace #FFFFFF with your desired tile color.
+     あなたの好きな色で`#FFFFFF`は置き換えましょう。
 
 
-### Very Optional, for the Obsessive
+### 任意(偏執的な方だけどうぞ)
 
-If you're obsessive, you want all this too:
+ありとあらゆるものをカバーしたいのならば以下のようにすることになります:
 
-  1. Largest to smallest [apple-touch-icons][4]:
+  1. [Appleのデバイス向けタッチ・アイコン][4]の全サイズ:
 
      ```html
      <!-- For iPad with high-resolution Retina display running iOS ≥ 7: -->
@@ -71,75 +69,73 @@ If you're obsessive, you want all this too:
      <link rel="apple-touch-icon-precomposed" href="/path/to/favicon-57.png">
      ```
 
-  2. Favicons targeted to any additional png sizes that you add that aren't covered above:
+  2. 上記でカバーできないサイズ:
 
      ```html
      <link rel="icon" href="/path/to/favicon-32.png" sizes="32x32">
      ```
 
+     *訳注:* 非標準の`sizes`属性を使ってサイズを教えてやるということです。
 
-The Images
+
+画像の作成
 ----------
 
-Create at least this:
+最低でも以下のものは作りましょう:
 
-|Sizes        |Name           |Purpose                                                                |
-|-------------|---------------|-----------------------------------------------------------------------|
-|16x16 & 32x32|favicon.ico    |Default required by IE. Chrome and Safari may pick ico over png, sadly.|
+|サイズ       |ファイル名 |目的                                                                                     |
+|-------------|-----------|-----------------------------------------------------------------------------------------|
+|16x16 & 32x32|favicon.ico|IEがデフォルトで必要とします。残念ながらChromeとSafariはpngよりicoを優先してしまいます。|
 
-More about favicon.ico below. Yes, it's 1 file with multiple sizes.
+`favicon.ico`について詳しくは後述しますが、ひとつのファイルで複数のサイズをまかなえます。
 
-If you also sort of care about iOS and Android but are lazy:
+iOSやAndroidへ簡単に対応したい場合は以下のサイズで作成します:
 
-|Sizes  |Name           |Purpose                                                  |
-|-------|---------------|---------------------------------------------------------|
-|152x152|favicon-152.png|General use iOS/Android icon, auto-downscaled by devices.|
+|サイズ |ファイル名     |目的                                                  |
+|-------|---------------|------------------------------------------------------|
+|152x152|favicon-152.png|iOSやAndroidで使われ、デバイス側で適切に縮小されます。|
 
-But keep in mind that icons with complex detail often don't downscale well.
-Often you have to tweak subtle design details for smaller sizes.
+しかしながら複雑なアイコンの場合、デバイス側の縮小がきれいに行われないことがあることは頭に入れておいた方が良いでしょう。きれいに縮小されるように細かい修正を行う必要があるかもしれません。
 
-If you're obsessive, create these too:
+偏執狂のあなたは以下のサイズも作りましょう:
 
-|Sizes  |Name           |Purpose                                                             |
-|-------|---------------|--------------------------------------------------------------------|
-|32x32  |favicon-32.png |Certain old but not too old Chrome versions mishandle ico           |
-|57x57  |favicon-57.png |Standard iOS home screen (iPod Touch, iPhone first generation to 3G)|
-|72x72  |favicon-72.png |iPad home screen icon                                               |
-|96x96  |favicon-96.png |GoogleTV icon                                                       |
-|120x120|favicon-120.png|iPhone retina touch icon (Change for iOS 7: up from 114x114)        |
-|128x128|favicon-128.png|Chrome Web Store icon                                               |
-|144x144|favicon-144.png|IE10 Metro tile for pinned site                                     |
-|152x152|favicon-152.png|iPad retina touch icon (Change for iOS 7: up from 144x144)          |
-|195x195|favicon-195.png|Opera Speed Dial icon                                               |
-
-
-ICO File
---------
-
-An .ico file is a container for multiple .bmp or .png icons of different sizes.
-In favicon.ico, create at least these:
-
-|Sizes|Purpose                                                                |
-|-----|-----------------------------------------------------------------------|
-|16x16|IE9 address bar, Pinned site Jump List/Toolbar/Overlay                 |
-|32x32|New tab page in IE, taskbar button in Win 7+, Safari Read Later sidebar|
-|48x48|Windows site icons                                                     |
-
-If you're obsessive and don't mind 1-3kb extra size, also include these sizes
-in your .ico:
-
-|Sizes|Purpose                                                      |
-|-----|-------------------------------------------------------------|
-|24x24|IE9 Pinned site browser UI                                   |
-|64x64|Windows site icons, Safari Read Later sidebar in HiDPI/Retina|
-
-Create your .ico out of optimized .png files.
-
-*TODO:* get confirmation that IE9+ supports .ico files that contain .png files ([Issue #9][5])
+|サイズ |ファイル名     |目的                                                                         |
+|-------|---------------|-----------------------------------------------------------------------------|
+|32x32  |favicon-32.png |特定の古いかといって古過ぎもしないChromeがicoを適切に扱わないバグへの対応    |
+|57x57  |favicon-57.png |非RetinaであるiOSのホーム・スクリーン(iPod TouchやiPhoneの第一世代から3Gまで)|
+|72x72  |favicon-72.png |iPadのホーム・スクリーン                                                     |
+|96x96  |favicon-96.png |GoogleTVのアイコン                                                           |
+|120x120|favicon-120.png|Retina iPhoneのタッチ・アイコン(iOS 7で114x114から変更)                      |
+|128x128|favicon-128.png|Chrome ウェブストアのアイコン                                                |
+|144x144|favicon-144.png|IE10のピン留めされたサイト向けタイル・アイコン                               |
+|152x152|favicon-152.png|Retina iPadのタッチ・アイコン (iOS 7で144x144から変更)                       |
+|195x195|favicon-195.png|Operaのスピード・ダイヤル・アイコン                                          |
 
 
-Helpful Tools
--------------
+ICOファイル
+-----------
+
+`ico`ファイルはサイズの違う`.bmp`や`.png`のアイコンを複数まとめることができるフォーマットです。`favicon.ico`では以下のサイズを最低限作成しておけばよいでしょう:
+
+|サイズ|目的                                                                                    |
+|------|----------------------------------------------------------------------------------------|
+|16x16 |IE9のアドレス・バーやピン留めされたサイト、ジャンプ・リスト、ツールバー、オーバーレイ   |
+|32x32 |IEの新しいタブやWidows 7以降のタスクバー・ボタン、Safariのリーディングリスト・サイドバー|
+|48x48 |Windowsサイト・アイコン                                                                 |
+
+偏執狂のあなたは1–3KBのファイルサイズの増加を気にしないのなら、以下のサイズも`favicon.ico`に含めると良いでしょう:
+
+|サイズ|目的                                                                               |
+|------|-----------------------------------------------------------------------------------|
+|24x24 |IE9のピン留めされたサイトでブラウザーウィンドウに表示されるアイコン                |
+|64x64 |高解像度デバイスでのWindowsサイト・アイコンやSafariのリーディングリスト・サイドバー|
+
+まずきっちりと`.png`を作り、それを元にして`.ico`を作成しましょう。
+
+*TODO:* IE9以降で`.png`を`.ico`に含められることについての確認 ([Issue #9][5])
+
+お役立ちツール
+--------------
 
 I recommend:
 
@@ -159,8 +155,8 @@ Others that I haven't tried:
   * [png2ico wrapper for ImageMagick][16]
 
 
-Forcing a Favicon Refresh
--------------------------
+ファビコンの強制的な再読み込み
+------------------------------
 
 Not normally needed. This is only for those frustrating times when you can't
 get your favicon to refresh, during development:
@@ -188,8 +184,8 @@ For large versioned deployments, if all site visitors need their favicon force-r
 
     *TODO:* find edge cases where this markup doesn't work ([Issue #3][18]).
 
-FAQ
----
+よくある質問
+------------
 
 ### What about having both a default root favicon.ico and favicon.png?
 
@@ -256,11 +252,10 @@ it's the simplest choice.
 Some proxies and load balancers can fail to read query strings in edge cases.
 
 
-Contribute!
------------
+是非、寄稿を！
+--------------
 
-Send pull requests if you have anything to add/change, providing citations
-and justification. I'd love to see this improve.
+もし他の文書の引用や根拠の提示のために追加や変更を加えたい場合はプル・リクエストを送ってください。この文書が充実させてくれることを楽しみにしています！
 
 
 [1]:  https://github.com/mathiasbynens
