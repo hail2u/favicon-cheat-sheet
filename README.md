@@ -7,7 +7,7 @@
   * http://mathiasbynens.be/notes/touch-icons <-- special thanks [@mathiasbynens][1]
   * http://www.jonathantneal.com/blog/understand-the-favicon/
   * https://en.wikipedia.org/wiki/Favicon.ico
-  * http://snook.ca/archives/design/making\_a\_good\_favicon
+  * http://snook.ca/archives/design/making_a_good_favicon
   * http://www.netmagazine.com/features/create-perfect-favicon
   * http://www.ravelrumba.com/blog/android-apple-touch-icon/
   * http://msdn.microsoft.com/en-us/library/ie/gg491740(v=vs.85).aspx
