@@ -132,7 +132,7 @@ ICOファイル
 
 まずきっちりと`.png`を作り、それを元にして`.ico`を作成しましょう。
 
-*TODO:* IE9以降で`.png`を`.ico`に含められることについての確認 ([Issue #9][5])
+*TODO:* IE9以降で`.png`を`.ico`に含められることについての確認([Issue #9][5])
 
 
 お役立ちツール
@@ -159,31 +159,29 @@ ICOファイル
 ファビコンの強制的な再読み込み
 ------------------------------
 
-Not normally needed. This is only for those frustrating times when you can't
-get your favicon to refresh, during development:
+通常は必要ありません。開発中にうまくファビコンが再読み込みされずイライラする時だけ試してみましょう:
 
-  * Clear the browser cache (Ctrl+F5 or Ctrl+Shift+R).
-  * Also close and reopen browser if IE.
-  * If still stuck, try opening new tab. Or follow [these complicated steps][17].
-  * Temporarily add explicit HTML markup and append a query string. Remove
-    this when you're done:
+  * ブラウザーのキャッシュをクリアする(Ctrl+F5またはCtrl+Shift+R)
+  * IEの場合はブラウザーを再起動する
+  * それでもダメな場合は新しいタブを開くか、[複雑な手順][17]をこなす
+  * 一時的にマークアップを変更してクエリ文字列を追加する。必ず後で削除しましょう:
 
     ```html
     <link rel="shortcut icon" href="http://www.yoursite.com/favicon.ico?v=2">
     <link rel="icon" sizes="16x16 32x32" href="/favicon.ico?v=2">
     ```
 
-For large versioned deployments, if all site visitors need their favicon force-refreshed in an extreme situation:
+大きな変更を加えたバージョンの公開時には全ての訪問者のファビコンを強制的に再読み込みさせたいこともあるでしょう:
 
-  * Add explicit HTML markup (customize the sizes part) and put your version
-    number in the filename.
+  * 以下のようなマークアップ(`sizes`属性の変更を忘れずに)を加えて、バージョン番号をファイル名に入れるようにしましょう:
 
     ```html
     <link rel="shortcut icon" href="/favicon-v2.ico">
     <link rel="icon" sizes="16x16 32x32" href="/favicon-v2.ico">
     ```
 
-    *TODO:* find edge cases where this markup doesn't work ([Issue #3][18]).
+    *TODO:* このマークアップがうまくいかないケースのさらなる調査([Issue #3][18]).
+
 
 よくある質問
 ------------
