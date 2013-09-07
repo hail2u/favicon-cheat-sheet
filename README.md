@@ -75,7 +75,7 @@ HTMLでのマークアップ
      <link rel="icon" href="/path/to/favicon-32.png" sizes="32x32">
      ```
 
-     *訳注:* 非標準の`sizes`属性を使ってサイズを教えてやるということです。
+     *訳注:* `sizes`属性を使ってサイズを教えてやるということです。
 
 
 画像の作成
@@ -186,69 +186,56 @@ ICOファイル
 よくある質問
 ------------
 
-### What about having both a default root favicon.ico and favicon.png?
+### `favicon.ico`と`favicon.png`の両方がルートにあるとどうなりますか？
 
-I think it's actually better to provide only `favicon.ico` and not `favicon.png`, because:
+`favicon.ico`のみを設置し、`favicon.png`は置かない方が良いと思います。その理由は:
 
-  * An `.ico` is a container for multiple `.bmp` or `.png` files. If you specify 1 default `favicon.png`, and if that `favicon.png` overrides the `favicon.ico`, you are giving up control over how the favicon looks at different resolutions and allowing the browser to do all resizing. For example, you might want the 64x64 version to contain text and the 16x16 version to not display the text at all, since at 16x16 it would be unreadable anyway.
-  * There is no `favicon.png` in the HTML5 specification, just `/favicon.ico`. From [current HTML specification][3]:
+  * `.ico`形式は複数の`.bmp`や`.png`のためのコンテナー・フォーマットです。`favicon.png`を1つ定義し、`favicon.ico`の代わりに`favicon.png`を使うようにすると、ブラウザーのリサイズ機能にすべて任せることになり、ファビコンが違う解像度でどのように表示されるかコントロールできなくなります。例えば64x64のアイコンでは文字を表示したいが、16x16のアイコンでは読めなくなるであろうことから文字は表示したくないというようなケースにも対応できます。
+  * HTML5仕様には`favicon.ico`については出てきますが、`favicon.png`については出てきません。[現在のHTML仕様によると][3]:
     > 'In the absence of a link with the icon keyword, for Documents obtained over HTTP or HTTPS, user agents may instead attempt to fetch and use an icon with the absolute URL obtained by resolving the URL "/favicon.ico" against the document's address, as if the page had declared that icon using the icon keyword.'
 
-More about this in [an answer on StackOverflow][19] (Note: the text in the chosen answer about alpha transparency is incorrect. See the 2nd answer.)
+このことについて詳しくは[似たような質問に対してのStackOverflowでの答え][19]を参照すると良いでしょう(注: アルファ・チャンネルという点での優位性を説明した答えは間違っているので、2つ目の答えを読んでください)。
 
 
-### Is it true that favicons should be in the site root?
+### ファビコンはルートに置くべきというのは本当ですか？
 
-No, that's only if you don't explicitly specify the browser/device-specific
-`<link>` tags with a favicon path. See [Favicon.ico article][20] on Wikipedia.
+いいえ、それはブラウザーやデバイスごとにファビコンのパスを指定した`<link>`タグを明示的に書かなかった場合に限った話です。Wikipediaの[Favicon.ico記事][20]も参照してください。
 
-If you don't have favicon.ico in the root consider adding one, or returning a HTTP 204 instead.
-Many tools and services e.g. bookmarking sites, feed readers, web crawlers etc., request a
-favicon.ico from the site root, and so recieve a HTTP 404 if it's not present. In the worst
-case some frameworks will return a custom error page which is likely to be many times larger
-than the missing favicon.
+もし`favicon.ico`をルートに置いていないなら、置くかHTTPステータス・コードで`204`を返すようにしましょう。多くのツールやサービス(ブックマークやフィード・リーダー、検索エンジンのクローラーなど)がルートに`favicon.ico`があるとしてリクエストしてきますが、もし無いとHTTPステータス・コードとして`404`を受け取ることになります。最悪の場合、ファビコンよりも何倍もサイズの大きいカスタム・エラー・ページを返す羽目になるかもしれません。
 
 
-### Is it true that the png has to be named favicon.png?
+### PNGの場合は`favicon.ico`という名前にする必要があるというのは本当ですか？
 
-No, this has never been true as far as I can tell from my obsessive research.
-
-
-### Is it true that the ico has to be named favicon.ico?
-
-If you don't explicitly specify its `<link>` tag, yes. Explicitness is best,
-so we both name it `favicon.ico` and explicitly specify the `<link>` tag.
+いいえ、私が偏執的に調べたところによるとそういった事実はまったくありません。
 
 
-### Why not prefix with "apple-touch-icon"?
+### ICOの場合は`favicon.ico`という名前にする必要があるというのは本当ですか？
 
-If you don't specify `<link>` tags, iOS looks for files prefixed with
-`apple-touch-icon` or `apple-touch-icon-precomposed`. Many (e.g. HTML5
-Boilerplate) rely on this assumption, but:
-
-  * Explicitly specifying `<link>` tags is clearer and supported by Apple.
-  * Not hard-coding names as `apple-touch-icon` clears up confusion as to whether
-    the same icons can be reused for other purposes as-is, e.g. reusing
-    favicon-144.png for Windows pinned site.
+もし明示的に`<link>`タグを書かないのならばその通りです。明示的に書くのが一番確実なので、`favicon.ico`という名前にして明示的に`<link>`タグを書くようにしています。
 
 
-### Why use iOS precomposed icons?
+### なぜ"apple-touch-icon"を頭に付けないのですか？
 
-  * iOS non-precomposed icons add rounded corners, drop shadow, and reflective
-    shine. Sounds great in theory, but in practice the results can be very
-    frustrating, especially to designers.
-  * Non-precomposed icons don't work with Android 2.1.
+`<link>`タグを書かない場合、iOSは勝手に`apple-touch-icon`か`apple-touch-icon-precomposed`が頭についたファイルを探します。HTML5 Boilerplateなど多くがこの挙動に依存しています。しかし:
 
-
-### Why absolute paths?
-
-Some Firefox versions require absolute paths. Since all browsers support them,
-it's the simplest choice.
+  * 明示的に`<link>`タグを書く方がよりわかりやすく、Appleがサポートしている形です。
+  * ファイル名を`apple-touch-icon`のように決め打ちしないことにより、同じサイズのアイコンの再利用性が高まります。例えば`favicon-144.png`をWindowsのピン留めされたサイトに再利用する場合など。
 
 
-### Why not append a query string to force-refresh for all visitors?
+### なぜiOS向けにprecomposedアイコンを指定するのですか？
 
-Some proxies and load balancers can fail to read query strings in edge cases.
+  * iOSは編集済みでないアイコンに角丸と影、反射の特殊効果を付け加えます。一見それで良さそうですが、実際にはそううまくいかず、特にデザイナーには納得の行くような結果にはなりません。
+  * 編集済みでないアイコンにAndroid 2.1は対応していません。
+
+
+### なぜ絶対パスを使うのですか？
+
+Firefoxの古いバージョンで絶対パスである必要があります。また絶対パスならば全てのブラウザーでサポートされているので、最も無難な選択でしょう。
+
+
+### なぜクエリ文字列を追加して全ての訪問者に強制的に再読み込みさせないのですか？
+
+いくつかのプロクシーやロード・バランサーでクエリ文字列の解釈に失敗するケースが確認されています。
 
 
 是非、寄稿を！
