@@ -244,6 +244,18 @@ Firefoxの古いバージョンで絶対パスである必要があります。�
 もし他の文書の引用や根拠の提示のために追加や変更を加えたい場合はプル・リクエストを送ってください。この文書を充実させてくれることを楽しみにしています！
 
 
+--------
+
+
+訳注
+----
+
+  * OptiPNGは適切なオプションを指定しないと256色かつ透過色に減色するので、それをそのまま`.ico`に含めると透過色が失われます
+  * Markdownフォーマットの翻訳が[GitHubのリポジトリ][26]にあります
+  * この文書も元のドキュメントのライセンスと同じく[MITライセンス][27]で提供されます
+  * この日本語訳について何かある場合は[フィードバック・フォーム][28]よりお願いします
+
+
 [1]:  http://mathiasbynens.be/notes/rel-shortcut-icon
 [2]:  https://github.com/mathiasbynens
 [3]:  http://mathiasbynens.be/notes/touch-icons
@@ -269,3 +281,6 @@ Firefoxの古いバージョンで絶対パスである必要があります。�
 [23]: https://github.com/audreyr/favicon-cheat-sheet/issues/3
 [24]: http://www.w3.org/html/wg/drafts/html/CR/links.html#rel-icon
 [25]: http://stackoverflow.com/questions/1344122/favicon-png-vs-favicon-ico-why-should-i-use-pngs-instead-of-icos/1344379#1344379
+[26]: https://github.com/hail2u/favicon-cheat-sheet
+[27]: https://github.com/hail2u/favicon-cheat-sheet/blob/master/LICENSE
+[28]: http://hail2u.wufoo.com/forms/feedback/
