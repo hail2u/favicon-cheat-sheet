@@ -3,14 +3,14 @@
 
 ファビコンのサイズや形式についての読むと頭が痛くなる偏執的なカンニング・ペーパーです。以下のURLを参考にしました:
 
-  * http://mathiasbynens.be/notes/rel-shortcut-icon <-- special thanks [@mathiasbynens][1]
-  * http://mathiasbynens.be/notes/touch-icons <-- special thanks [@mathiasbynens][1]
-  * http://www.jonathantneal.com/blog/understand-the-favicon/
-  * https://en.wikipedia.org/wiki/Favicon.ico
-  * http://snook.ca/archives/design/making_a_good_favicon
-  * http://www.netmagazine.com/features/create-perfect-favicon
-  * http://www.ravelrumba.com/blog/android-apple-touch-icon/
-  * http://msdn.microsoft.com/en-us/library/ie/gg491740(v=vs.85).aspx
+  * [rel="shortcut icon" considered harmful · Mathias Bynens][1] <-- special thanks [@mathiasbynens][2]
+  * [Everything you always wanted to know about touch icons · Mathias Bynens][3] <-- special thanks [@mathiasbynens][2]
+  * [Jonathan T. Neal | Understand the Favicon][4]
+  * [Favicon - Wikipedia, the free encyclopedia][5]
+  * [Making a Good Favicon - Snook.ca][6]
+  * [Create the perfect favicon | Feature | .net magazine][7]
+  * [Getting Android to Recognize Apple Touch Icons - Ravelrumba by Rob Flaherty][8]
+  * [Customizing the Site Icon (Windows)][9]
 
 
 HTMLでのマークアップ
@@ -47,7 +47,7 @@ HTMLでのマークアップ
 
 ありとあらゆるものをカバーしたいのならば以下のようにすることになります:
 
-  1. [Appleの各デバイス向けタッチ・アイコン][4]の全サイズ:
+  1. [Appleの各デバイス向けタッチ・アイコン][3]の全サイズ:
 
      ```html
      <!-- For iPad with high-resolution Retina display running iOS ≥ 7: -->
@@ -83,8 +83,8 @@ HTMLでのマークアップ
 
 最低でも以下のものは作りましょう:
 
-|サイズ       |ファイル名 |目的                                                                                     |
-|-------------|-----------|-----------------------------------------------------------------------------------------|
+|サイズ       |ファイル名 |目的                                                                                    |
+|-------------|-----------|----------------------------------------------------------------------------------------|
 |16x16 & 32x32|favicon.ico|IEがデフォルトで必要とします。残念ながらChromeとSafariはpngよりicoを優先してしまいます。|
 
 `favicon.ico`について詳しくは後述しますが、ひとつのファイルで複数のサイズをまかなえます。
@@ -140,20 +140,20 @@ ICOファイル
 
 オススメなのは以下の2つです:
 
-  1. [OptiPNG][6]: `.ico`にまとめる前に`.png`を最適化
-  2. [ImageMagick][7]: [複数の`.png`ファイルをまとめて`.ico`に変換][8]
+  1. [OptiPNG][11]: `.ico`にまとめる前に`.png`を最適化
+  2. [ImageMagick][12]: [複数の`.png`ファイルをまとめて`.ico`に変換][13]
 
 試したわけではありませんが、以下のツールも役に立つでしょう:
 
   * Ubuntu/Debianのパッケージである`icoutil`には`.png`から`.ico`を作成するツールが含まれています。
-  * MSDNでは[X-Icon Editor][9]の利用を推奨しています
-  * リサイズには[Faviconer][10]が良いでしょう。
-  * [icon][11]もリサイズに向いたツールです。
-  * JavaScriptを利用して動的にファビコンを変更する[favicon-setter][12]というツールもあります。
-  * ファイル・アップロードのプログレス表示などをファビコンで行える[piecon][13]というツールも面白いでしょう。
-  * [Web Icon][14]は12種類のサイズのファビコンを一気に作成してくれるシェルスクリプトです。
-  * [Icon Slate app][15] (OS X)
-  * [png2ico wrapper for ImageMagick][16]
+  * MSDNでは[X-Icon Editor][14]の利用を推奨しています
+  * リサイズには[Faviconer][15]が良いでしょう。
+  * [icon][16]もリサイズに向いたツールです。
+  * JavaScriptを利用して動的にファビコンを変更する[favicon-setter][17]というツールもあります。
+  * ファイル・アップロードのプログレス表示などをファビコンで行える[piecon][18]というツールも面白いでしょう。
+  * [Web Icon][19]は12種類のサイズのファビコンを一気に作成してくれるシェルスクリプトです。
+  * [Icon Slate app][20] (OS X)
+  * [png2ico wrapper for ImageMagick][21]
 
 
 ファビコンの強制的な再読み込み
@@ -163,7 +163,7 @@ ICOファイル
 
   * ブラウザーのキャッシュをクリアする(Ctrl+F5またはCtrl+Shift+R)
   * IEの場合はブラウザーを再起動する
-  * それでもダメな場合は新しいタブを開くか、[複雑な手順][17]をこなす
+  * それでもダメな場合は新しいタブを開くか、[複雑な手順][22]をこなす
   * 一時的にマークアップを変更してクエリ文字列を追加する。必ず後で削除しましょう:
 
     ```html
@@ -180,7 +180,7 @@ ICOファイル
     <link rel="icon" sizes="16x16 32x32" href="/favicon-v2.ico">
     ```
 
-    *TODO:* このマークアップがうまくいかないケースのさらなる調査([Issue #3][18]).
+    *TODO:* このマークアップがうまくいかないケースのさらなる調査([Issue #3][23]).
 
 
 よくある質問
@@ -191,15 +191,15 @@ ICOファイル
 `favicon.ico`のみを設置し、`favicon.png`は置かない方が良いと思います。その理由は:
 
   * `.ico`形式は複数の`.bmp`や`.png`のためのコンテナー・フォーマットです。`favicon.png`を1つ定義し、`favicon.ico`の代わりに`favicon.png`を使うようにすると、ブラウザーのリサイズ機能にすべて任せることになり、ファビコンが違う解像度でどのように表示されるかコントロールできなくなります。例えば64x64のアイコンでは文字を表示したいが、16x16のアイコンでは読めなくなるであろうことから文字は表示したくないというようなケースにも対応できます。
-  * HTML5仕様には`favicon.ico`については出てきますが、`favicon.png`については出てきません。[現在のHTML仕様によると][3]:
+  * HTML5仕様には`favicon.ico`については出てきますが、`favicon.png`については出てきません。[現在のHTML仕様によると][24]:
     > 'In the absence of a link with the icon keyword, for Documents obtained over HTTP or HTTPS, user agents may instead attempt to fetch and use an icon with the absolute URL obtained by resolving the URL "/favicon.ico" against the document's address, as if the page had declared that icon using the icon keyword.'
 
-このことについて詳しくは[似たような質問に対してのStackOverflowでの答え][19]を参照すると良いでしょう(注: アルファ・チャンネルという点での優位性を説明した答えは間違っているので、2つ目の答えを読んでください)。
+このことについて詳しくは[似たような質問に対してのStackOverflowでの答え][25]を参照すると良いでしょう(注: アルファ・チャンネルという点での優位性を説明した答えは間違っているので、2つ目の答えを読んでください)。
 
 
 ### ファビコンはルートに置くべきというのは本当ですか？
 
-いいえ、それはブラウザーやデバイスごとにファビコンのパスを指定した`<link>`タグを明示的に書かなかった場合に限った話です。Wikipediaの[Favicon.ico記事][20]も参照してください。
+いいえ、それはブラウザーやデバイスごとにファビコンのパスを指定した`<link>`タグを明示的に書かなかった場合に限った話です。Wikipediaの[Favicon.ico記事][5]も参照してください。
 
 もし`favicon.ico`をルートに置いていないなら、置くかHTTPステータス・コードで`204`を返すようにしましょう。多くのツールやサービス(ブックマークやフィード・リーダー、検索エンジンのクローラーなど)がルートに`favicon.ico`があるとしてリクエストしてきますが、もし無いとHTTPステータス・コードとして`404`を受け取ることになります。最悪の場合、ファビコンよりも何倍もサイズの大きいカスタム・エラー・ページを返す羽目になるかもしれません。
 
@@ -244,23 +244,28 @@ Firefoxの古いバージョンで絶対パスである必要があります。�
 もし他の文書の引用や根拠の提示のために追加や変更を加えたい場合はプル・リクエストを送ってください。この文書が充実させてくれることを楽しみにしています！
 
 
-[1]:  https://github.com/mathiasbynens
-[2]:  http://mathiasbynens.be/notes/rel-shortcut-icon
-[3]:  http://www.w3.org/html/wg/drafts/html/CR/links.html#rel-icon
-[4]:  http://mathiasbynens.be/notes/touch-icons
-[5]:  https://github.com/audreyr/favicon-cheat-sheet/issues/9
-[6]:  http://optipng.sourceforge.net/
-[7]:  http://www.imagemagick.org/Usage/thumbnails/#favicon
-[8]:  http://blog.morzproject.com/convert-multiple-png-images-into-a-single-icon-file/
-[9]:  http://www.xiconeditor.com
-[10]: http://faviconer.com
-[11]: https://github.com/abrkn/icon
-[12]: https://github.com/HenrikJoreteg/favicon-setter
-[13]: https://github.com/component/piecon
-[14]: https://github.com/emarref/webicon
-[15]: https://itunes.apple.com/us/app/icon-slate/id439697913
-[16]: https://github.com/bebraw/png2ico
-[17]: http://stackoverflow.com/questions/2208933/how-do-i-force-a-favicon-refresh/5239747#5239747
-[18]: https://github.com/audreyr/favicon-cheat-sheet/issues/3
-[19]: http://stackoverflow.com/questions/1344122/favicon-png-vs-favicon-ico-why-should-i-use-pngs-instead-of-icos/1344379#1344379
-[20]: https://en.wikipedia.org/wiki/Favicon.ico
+[1]:  http://mathiasbynens.be/notes/rel-shortcut-icon
+[2]:  https://github.com/mathiasbynens
+[3]:  http://mathiasbynens.be/notes/touch-icons
+[4]:  http://www.jonathantneal.com/blog/understand-the-favicon/
+[5]:  https://en.wikipedia.org/wiki/Favicon.ico
+[6]:  http://snook.ca/archives/design/making_a_good_favicon
+[7]:  http://www.netmagazine.com/features/create-perfect-favicon
+[8]:  http://www.ravelrumba.com/blog/android-apple-touch-icon/
+[9]:  http://msdn.microsoft.com/en-us/library/ie/gg491740(v=vs.85).aspx
+[10]: https://github.com/audreyr/favicon-cheat-sheet/issues/9
+[11]: http://optipng.sourceforge.net/
+[12]: http://www.imagemagick.org/Usage/thumbnails/#favicon
+[13]: http://blog.morzproject.com/convert-multiple-png-images-into-a-single-icon-file/
+[14]: http://www.xiconeditor.com
+[15]: http://faviconer.com
+[16]: https://github.com/abrkn/icon
+[17]: https://github.com/HenrikJoreteg/favicon-setter
+[18]: https://github.com/component/piecon
+[19]: https://github.com/emarref/webicon
+[20]: https://itunes.apple.com/us/app/icon-slate/id439697913
+[21]: https://github.com/bebraw/png2ico
+[22]: http://stackoverflow.com/questions/2208933/how-do-i-force-a-favicon-refresh/5239747#5239747
+[23]: https://github.com/audreyr/favicon-cheat-sheet/issues/3
+[24]: http://www.w3.org/html/wg/drafts/html/CR/links.html#rel-icon
+[25]: http://stackoverflow.com/questions/1344122/favicon-png-vs-favicon-ico-why-should-i-use-pngs-instead-of-icos/1344379#1344379
