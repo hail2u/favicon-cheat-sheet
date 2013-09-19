@@ -110,6 +110,7 @@ iOSやAndroidへ簡単に対応したい場合は以下のサイズで作成し�
 |144x144|favicon-144.png|IE10のピン留めされたサイト向けタイル・アイコン                           |
 |152x152|favicon-152.png|Retina iPadのタッチ・アイコン(iOS 7で144x144から変更)                    |
 |195x195|favicon-195.png|Operaのスピード・ダイヤル・アイコン                                      |
+|228x228|favicon-228.png|Opera Coastのアイコン                                                    |
 
 
 ICOファイル
