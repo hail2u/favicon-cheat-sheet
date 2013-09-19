@@ -117,6 +117,7 @@ Size    Name            Purpose
 144x144 favicon-144.png IE10 Metro tile for pinned site
 152x152 favicon-152.png iPad retina touch icon (Change for iOS 7: up from 144x144)
 195x195 favicon-195.png Opera Speed Dial icon
+228x228 favicon-228.png Opera Coast icon
 ======= =============== =======================================================================
 
 ICO File
@@ -140,7 +141,7 @@ in your .ico:
 Size    Purpose
 ======= =======================================================================
 24x24   IE9 Pinned site browser UI
-64x64   Windows site icons [4]_, Safari Read Later sidebar in HiDPI/Retina
+64x64   Windows site icons [4]_, Safari Reading List sidebar in HiDPI/Retina
 ======= =======================================================================
 
 Create your .ico out of optimized .png files.
